@@ -2559,6 +2559,11 @@ function-bind@^1.1.1:
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
 
+generate-maze@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/generate-maze/-/generate-maze-0.2.0.tgz#1b1140352fbc9bdabe5f4c8eab72d0faf45b7993"
+  integrity sha512-gB9eK/GxsoycgqkDOLNyN4xBvCeKVdMzzhAgNw++RffHYwRZCj31jf1GrrBnRZ7taJyv0OzEcW3eMA/qAu5bZA==
+
 gensync@^1.0.0-beta.1:
   version "1.0.0-beta.1"
   resolved "https://registry.yarnpkg.com/gensync/-/gensync-1.0.0-beta.1.tgz#58f4361ff987e5ff6e1e7a210827aa371eaac269"

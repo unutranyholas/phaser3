@@ -1,32 +1,34 @@
 import Phaser from "phaser";
-import logoImg from "./assets/logo.png";
+import tanks from "./assets/tanks.png";
+import {generateLevel} from "./level";
+import {cellSize, height, scale, tileSize, width} from "./constants";
 
 const config = {
   type: Phaser.AUTO,
   parent: "phaser-example",
-  width: 800,
-  height: 600,
+  width: width * cellSize * tileSize * scale,
+  height: height * cellSize * tileSize * scale,
+  backgroundColor: "#ff0000",
   scene: {
     preload: preload,
-    create: create
-  }
+    create: create,
+    update: update,
+  },
+  pixelArt: true,
 };
 
 const game = new Phaser.Game(config);
 
 function preload() {
-  this.load.image("logo", logoImg);
+  this.load.image('game', tanks);
 }
 
 function create() {
-  const logo = this.add.image(400, 150, "logo");
+  const level = generateLevel(width, height, cellSize);
+  const map = this.make.tilemap({data: level, tileWidth: tileSize, tileHeight: tileSize});
+  const tiles = map.addTilesetImage('game');
+  const layer = map.createStaticLayer(0, tiles, 0, 0).setScale(scale);
+}
 
-  this.tweens.add({
-    targets: logo,
-    y: 450,
-    duration: 2000,
-    ease: "Power2",
-    yoyo: true,
-    loop: -1
-  });
+function update() {
 }
