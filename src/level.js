@@ -2,7 +2,7 @@ import generator from "generate-maze";
 
 const getRandomInt = max => Math.floor(Math.random() * Math.floor(max));
 
-const blocks = [16, 41, 66]
+export const blocks = [16, 41, 66]
 const spaces = [67, 68, 93];
 
 const getRandomBlock = () => blocks[getRandomInt(blocks.length)];
