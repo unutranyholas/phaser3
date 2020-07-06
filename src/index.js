@@ -52,11 +52,6 @@ function create() {
     repeat: -1
   });
   this.anims.create({
-    key: 'turn',
-    frames: [ { key: 'game-sprite'} ],
-    frameRate: 20
-  });
-  this.anims.create({
     key: 'right',
     frames: this.anims.generateFrameNumbers('game-sprite', { start: 6, end: 7 }),
     frameRate: 10,
