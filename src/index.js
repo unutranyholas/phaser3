@@ -45,6 +45,36 @@ function create() {
   player.setCollideWorldBounds(true);
   this.physics.add.collider(player, layer, overlap, null, this);
 
+  this.anims.create({
+    key: 'left',
+    frames: this.anims.generateFrameNumbers('game-sprite',{start: 2, end: 3}),
+    frameRate: 10,
+    repeat: -1
+  });
+  this.anims.create({
+    key: 'turn',
+    frames: [ { key: 'game-sprite'} ],
+    frameRate: 20
+  });
+  this.anims.create({
+    key: 'right',
+    frames: this.anims.generateFrameNumbers('game-sprite', { start: 6, end: 7 }),
+    frameRate: 10,
+    repeat: -1
+  });
+  this.anims.create({
+    key: 'up',
+    frames: this.anims.generateFrameNumbers('game-sprite', { start: 0, end: 1 }),
+    frameRate: 10,
+    repeat: -1
+  });
+  this.anims.create({
+    key: 'down',
+    frames: this.anims.generateFrameNumbers('game-sprite', { start: 4, end: 5 }),
+    frameRate: 10,
+    repeat: -1
+  });
+
 }
 
 function overlap(player, {x, y, index}) {
@@ -55,21 +85,22 @@ function update() {
   player.setVelocity(0);
   if (cursors.left.isDown) {
     player.setY(Phaser.Math.Snap.To(player.y, snapGap));
-    player.setFrame(2);
     player.setVelocityX(-velocity);
+    player.anims.play('left', true);
   } else if (cursors.right.isDown) {
     player.setY(Phaser.Math.Snap.To(player.y, snapGap));
-    player.setFrame(6);
     player.setVelocityX(velocity);
-  }
-
-  if (cursors.up.isDown) {
+    player.anims.play('right', true);
+  }else if (cursors.up.isDown) {
     player.setX(Phaser.Math.Snap.To(player.x, snapGap));
-    player.setFrame(0);
     player.setVelocityY(-velocity);
+    player.anims.play('up', true);
   } else if (cursors.down.isDown) {
     player.setX(Phaser.Math.Snap.To(player.x, snapGap));
-    player.setFrame(4);
+    //player.setFrame(4);
     player.setVelocityY(velocity);
+    player.anims.play('down', true);
+  } else{
+    player.anims.play(false);
   }
 }
