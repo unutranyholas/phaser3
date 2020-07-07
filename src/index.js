@@ -28,9 +28,12 @@ const game = new Phaser.Game(config);
 function preload() {
   this.load.image('game', tanks);
   this.load.spritesheet('game-sprite', tanks, {frameWidth: tileSize, frameHeight: tileSize});
+
 }
 
 let player;
+let bullet;
+let graphics;
 let cursors;
 
 function create() {
@@ -70,6 +73,10 @@ function create() {
     repeat: -1
   });
 
+  bullet = new Phaser.Geom.Rectangle(0, 0, 10, 10);
+  graphics = this.add.graphics({ fillStyle: { color: 0x0000ff } });
+  graphics.fillRectShape(bullet);
+
 }
 
 function overlap(player, {x, y, index}) {
@@ -92,7 +99,6 @@ function update() {
     player.anims.play('up', true);
   } else if (cursors.down.isDown) {
     player.setX(Phaser.Math.Snap.To(player.x, snapGap));
-    //player.setFrame(4);
     player.setVelocityY(velocity);
     player.anims.play('down', true);
   } else{
